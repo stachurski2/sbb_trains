@@ -1,14 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sbb_trains/helpers/app_localizations.dart';
+import 'package:sbb_trains/modules/disclaimer.dart';
 
-class OnboardingPage extends StatefulWidget {
-  OnboardingPage({Key key}) : super(key: key);
-
-  @override
-  _OnboardingState createState() => _OnboardingState();
-}
-
-class _OnboardingState extends State<OnboardingPage> {
+class OnboardingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +30,12 @@ class _OnboardingState extends State<OnboardingPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 RaisedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Disclaimer()),
+                    );
+                  },
                   color: Color.fromRGBO(227, 51, 62, 1.0),
                   textColor: Colors.white,
                   child: Text(
