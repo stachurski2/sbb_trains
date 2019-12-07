@@ -8,7 +8,7 @@ class Disclaimer extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Disclaimer"),
-        backgroundColor: ColorProvider().standardAppColor,
+        backgroundColor: ColorProvider.shared.standardAppBackgroundColor,
       ),
       body: Center(
         child: RaisedButton(

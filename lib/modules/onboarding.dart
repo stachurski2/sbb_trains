@@ -8,6 +8,7 @@ class OnboardingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: ColorProvider.shared.onBoardingBackgroundColor,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -37,8 +38,8 @@ class OnboardingPage extends StatelessWidget {
                       MaterialPageRoute(builder: (context) => Disclaimer()),
                     );
                   },
-                  color:ColorProvider().standardAppColor,
-                  textColor: Colors.white,
+                  color: ColorProvider.shared.standardAppBackgroundColor,
+                  textColor: ColorProvider.shared.standardButttonTextColor,
                   child: Text(
                     AppLocalizations.of(context).translate('onboarding_disclaimer_button_title'),
                   ),
@@ -46,8 +47,8 @@ class OnboardingPage extends StatelessWidget {
                 SizedBox(width: 50, height: 1),
                 RaisedButton(
                   onPressed: () {},
-                  color: Color.fromRGBO(227, 51, 62, 1.0),
-                  textColor: Colors.white,
+                  color: ColorProvider.shared.standardAppBackgroundColor,
+                  textColor: ColorProvider.shared.standardButttonTextColor,
                   child: Text(
                     AppLocalizations.of(context).translate('onboarding_proceed_button_title'),
 
