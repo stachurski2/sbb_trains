@@ -3,22 +3,26 @@ import 'package:sbb_trains/helpers/app_localizations.dart';
 import 'package:sbb_trains/helpers/color_provider.dart';
 
 class Disclaimer extends StatelessWidget {
+
+
   @override
   Widget build(BuildContext context) {
+    double c_width = MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Disclaimer"),
         backgroundColor: ColorProvider.shared.standardAppBackgroundColor,
       ),
-      body: Center(
+      body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
+            SizedBox(
+              height: 20,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                SizedBox(
-                  height: 100,
-                ),
                 Text(
                     AppLocalizations.of(context).translate('disclaimer_title'),
                     style: TextStyle(fontSize: 25),
@@ -27,17 +31,25 @@ class Disclaimer extends StatelessWidget {
               ],
             ),
             Row(
-//              mainAxisAlignment: MainAxisAlignment.center,
-//              children: <Widget>[
-//                Padding(
-//                  child:  Text(
-//                      AppLocalizations.of(context).translate('disclaimer_content'),
-//                      style: TextStyle(fontSize: 12),
-//                      textAlign: TextAlign.center
-//                  ),
-//                )
-//
-//              ],
+
+              children: <Widget> [
+                Container(
+                  padding: const EdgeInsets.all(24.0),
+                  width: c_width,
+                  child: Column(
+                    children: <Widget>[
+                      Center(
+                        child: Text(
+                            AppLocalizations.of(context).translate('disclaimer_content'),
+                            style: TextStyle(fontSize: 12),
+                            textAlign: TextAlign.justify
+                        ),
+                      )
+                      ],
+                  ),
+                )
+
+              ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -46,7 +58,9 @@ class Disclaimer extends StatelessWidget {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  child: Text('Go back!'),
+                  child: Text(
+                      AppLocalizations.of(context).translate('disclaimer_button'),
+                  ),
                 ),
               ],
             ),
