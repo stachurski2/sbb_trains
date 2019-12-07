@@ -11,12 +11,49 @@ class Disclaimer extends StatelessWidget {
         backgroundColor: ColorProvider.shared.standardAppBackgroundColor,
       ),
       body: Center(
-        child: RaisedButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: Text('Go back!'),
-        ),
+        child: Column(
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                SizedBox(
+                  height: 100,
+                ),
+                Text(
+                    AppLocalizations.of(context).translate('disclaimer_title'),
+                    style: TextStyle(fontSize: 25),
+                    textAlign: TextAlign.center
+                ),
+              ],
+            ),
+            Row(
+//              mainAxisAlignment: MainAxisAlignment.center,
+//              children: <Widget>[
+//                Padding(
+//                  child:  Text(
+//                      AppLocalizations.of(context).translate('disclaimer_content'),
+//                      style: TextStyle(fontSize: 12),
+//                      textAlign: TextAlign.center
+//                  ),
+//                )
+//
+//              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                RaisedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text('Go back!'),
+                ),
+              ],
+            ),
+          ],
+        )
+
+
       ),
     );
   }

@@ -15,7 +15,6 @@ class OnboardingPage extends StatelessWidget {
           children: <Widget>[
             Image.asset('assets/train-switzerland-logo.png', width: 300, height: 300,),
             SizedBox(
-              width: 1,
               height: 25,
             ),
             Text(
@@ -25,7 +24,6 @@ class OnboardingPage extends StatelessWidget {
             ),
 
             SizedBox(
-              width: 1,
               height: 25,
             ),
             Row(
@@ -44,7 +42,7 @@ class OnboardingPage extends StatelessWidget {
                     AppLocalizations.of(context).translate('onboarding_disclaimer_button_title'),
                   ),
                 ),
-                SizedBox(width: 50, height: 1),
+                SizedBox(width: 50),
                 RaisedButton(
                   onPressed: () {},
                   color: ColorProvider.shared.standardAppBackgroundColor,
