@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sbb_trains/helpers/app_localizations.dart';
+import 'package:sbb_trains/helpers/color_provider.dart';
 
 class Disclaimer extends StatelessWidget {
   @override
@@ -7,7 +8,7 @@ class Disclaimer extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Disclaimer"),
-        backgroundColor: Color.fromRGBO(227, 51, 62, 1.0),
+        backgroundColor: ColorProvider().standardAppColor,
       ),
       body: Center(
         child: RaisedButton(

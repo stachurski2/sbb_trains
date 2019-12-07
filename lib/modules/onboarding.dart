@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sbb_trains/helpers/app_localizations.dart';
 import 'package:sbb_trains/modules/disclaimer.dart';
+import 'package:sbb_trains/helpers/color_provider.dart';
 
 class OnboardingPage extends StatelessWidget {
 
@@ -36,7 +37,7 @@ class OnboardingPage extends StatelessWidget {
                       MaterialPageRoute(builder: (context) => Disclaimer()),
                     );
                   },
-                  color: Color.fromRGBO(227, 51, 62, 1.0),
+                  color:ColorProvider().standardAppColor,
                   textColor: Colors.white,
                   child: Text(
                     AppLocalizations.of(context).translate('onboarding_disclaimer_button_title'),
