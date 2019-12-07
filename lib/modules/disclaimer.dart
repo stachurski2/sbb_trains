@@ -64,6 +64,9 @@ class Disclaimer extends StatelessWidget {
                 ),
               ],
             ),
+            SizedBox(
+              height: 20,
+            )
           ],
         )
 
