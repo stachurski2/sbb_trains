@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:sbb_trains/helpers/app_localizations.dart';
 import 'package:sbb_trains/helpers/color_provider.dart';
-import 'package:sbb_trains/helpers/api_client.dart';
+import 'package:sbb_trains/networking/api_client.dart';
+import 'package:sbb_trains/networking/server_response.dart';
+import 'package:sbb_trains/model/station.dart';
 
 class SearchingPage extends StatefulWidget {
 
@@ -11,6 +13,9 @@ class SearchingPage extends StatefulWidget {
 }
 
 class SearchingPageState extends State<SearchingPage> {
+
+  int resultsCount = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,12 +27,21 @@ class SearchingPageState extends State<SearchingPage> {
           children: <Widget>[
           TextField(
             onChanged: (word) async {
-              APIClient.shared.fetchLocation(word);
+              Future<ServerResponse<List<Station>>> response = APIClient.shared.fetchLocationList(word);
+              ServerResponse<List<Station>> serverResponse = await response;
+              if (await serverResponse.responseObject != null) {
+              List<Station> listStation = serverResponse.responseObject;
+              resultsCount = listStation.length;
+              } else {
+                print('some expection thrown');
+              };
             },
           ),
-        ],
-          mainAxisAlignment: MainAxisAlignment.center
-      )
-    );
+            SizedBox(height: 20),
+            Text('$resultsCount'),
+        ]
+
+      ),
+      );
   }
 }
