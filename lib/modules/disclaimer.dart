@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sbb_trains/helpers/app_localizations.dart';
 import 'package:sbb_trains/helpers/color_provider.dart';
 
-class Disclaimer extends StatelessWidget {
+class DisclaimerPage extends StatelessWidget {
 
 
   @override

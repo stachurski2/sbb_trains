@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sbb_trains/helpers/app_localizations.dart';
 import 'package:sbb_trains/modules/disclaimer.dart';
+import 'package:sbb_trains/modules/searching.dart';
 import 'package:sbb_trains/helpers/color_provider.dart';
 
 class OnboardingPage extends StatelessWidget {
@@ -33,7 +34,7 @@ class OnboardingPage extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Disclaimer()),
+                      MaterialPageRoute(builder: (context) => DisclaimerPage()),
                     );
                   },
                   color: ColorProvider.shared.standardAppBackgroundColor,
@@ -44,7 +45,12 @@ class OnboardingPage extends StatelessWidget {
                 ),
                 SizedBox(width: 50),
                 RaisedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SearchingPage()),
+                    );
+                  },
                   color: ColorProvider.shared.standardAppBackgroundColor,
                   textColor: ColorProvider.shared.standardButttonTextColor,
                   child: Text(
