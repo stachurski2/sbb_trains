@@ -11,7 +11,7 @@ class DisclaimerPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Disclaimer"),
+        title: Text(AppLocalizations.of(context).translate('disclaimer_module_name')),
         backgroundColor: ColorProvider.shared.standardAppBackgroundColor,
       ),
       body: SingleChildScrollView(
