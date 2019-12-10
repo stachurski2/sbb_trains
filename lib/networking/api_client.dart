@@ -11,16 +11,7 @@ class APIClient {
     return shared;
   }
   APIClient._internal();
-
-  Future<http.Response> fetchLocation(String input) async {
-    final response = await http.get('http://transport.opendata.ch/v1/locations?query='+input);
-    if (response.statusCode == 200) {
-      print(jsonDecode(response.body));
-    }
-    return response;
-  }
-
-
+  
   Future<ServerResponse<List<Station>>> fetchLocationList(String input) async {
     final response = await http.get('http://transport.opendata.ch/v1/locations?query='+input);
     if(response.statusCode != 200) {
