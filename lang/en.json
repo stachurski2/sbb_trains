@@ -10,5 +10,7 @@
   "searching_start_journey_label" : "Start journey point:",
   "searching_end_journey_label" : "End journey point:",
   "searching_start_journey_placeholder" : "Type start journey place",
-  "searching_end_journey_placeholder" : "Type end journey place"
+  "searching_end_journey_placeholder" : "Type end journey place",
+  "searching_time_journey_label" : "Journey time"
+
 }

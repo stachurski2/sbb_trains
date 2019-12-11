@@ -6,6 +6,9 @@ import 'package:sbb_trains/helpers/color_provider.dart';
 import 'package:sbb_trains/networking/api_client.dart';
 import 'package:sbb_trains/networking/server_response.dart';
 import 'package:sbb_trains/model/station.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:intl/intl.dart';
+
 
 class SearchingPage extends StatefulWidget {
 
@@ -18,7 +21,8 @@ class SearchingPageState extends State<SearchingPage> {
 
   Station selectedFrom;
   Station selectedTo;
-  List<Station> stationList;
+  DateTime journeyTime = DateTime.now();
+  DateFormat formatter =  DateFormat('yyyy-MM-dd HH:mm');
 
   @override
   Widget build(BuildContext context) {
@@ -85,71 +89,33 @@ class SearchingPageState extends State<SearchingPage> {
             },
             formatter: (station) {
               return station.name;
-            })
+            }),
+              SizedBox(height: 10),
+              Row(
+                  children: <Widget>[
+                    Text(AppLocalizations.of(context).translate('searching_time_journey_label'),
+                        textAlign: TextAlign.left)]
+              ),
+              FlatButton(
+                onPressed: () {
+                  print(journeyTime);
+                  DatePicker.showDateTimePicker(context,
+                      showTitleActions: true,
+                       onChanged: (date) {
+                         journeyTime = date;
+                      }, onConfirm: (date) {
+                         (this).setState(() {
+                           journeyTime = date;
+                         });
+                      }, currentTime: DateTime.now());
+              },
+              child: Text(
+                  formatter.format(journeyTime),
+              ))
             ],
 
           ),
         )
-
-
-
-
-
-//      Column (
-//          children: <Widget>[
-//            SizedBox(height: 10),
-//            Row(
-//              children: <Widget>[
-//                Text(AppLocalizations.of(context).translate('searching_start_journey_label'),
-//                  textAlign: TextAlign.left)]
-//            ),
-//            Container(
-//                padding: const EdgeInsets.only(left: 24.0, right: 24.0),
-//                child: MaterialSearchInput<Station>(
-//                  placeholder: selectedFrom == null ? 'Start journey place:' : '',
-//                  getResults: (word) async {
-//                    Future<ServerResponse<List<Station>>> response = APIClient.shared.fetchLocationList(word);
-//                    ServerResponse<List<Station>> serverResponse = await response;
-//                    List<Station> listStation = serverResponse.responseObject;
-//                    return listStation.map((station) =>  MaterialSearchResult<Station>(
-//                        value: station, //The value must be of type <String>
-//                        text: station.name)).toList();
-//                  },
-//                  onSelect: (station) {
-//                    selectedFrom = station;
-//                  },
-//                  formatter: (station) {
-//                    return station.name;
-//                  },
-//            )
-//
-//            ),
-//            SizedBox(height: 10),
-//            Text(AppLocalizations.of(context).translate('searching_end_journey_label')),
-//            Container(
-//                padding: const EdgeInsets.only(left: 24.0, right: 24.0),
-//                child: MaterialSearchInput<Station>(
-//                  placeholder: selectedFrom == null ? 'End journey place:' : '',
-//                  getResults: (word) async {
-//                    Future<ServerResponse<List<Station>>> response = APIClient.shared.fetchLocationList(word);
-//                    ServerResponse<List<Station>> serverResponse = await response;
-//                    List<Station> listStation = serverResponse.responseObject;
-//                    return listStation.map((station) =>  MaterialSearchResult<Station>(
-//                        value: station, //The value must be of type <String>
-//                        text: station.name)).toList();
-//                  },
-//                  onSelect: (station) {
-//                    selectedTo = station;
-//                  },
-//                  formatter: (station) {
-//                    return station.name;
-//                  },
-//                )
-//
-//            ),
-//        ]
-//
-//      ),
       );
   }
 }
