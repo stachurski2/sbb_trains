@@ -154,7 +154,7 @@ class SearchingPageState extends State<SearchingPage> {
           break;
         default:
           {
-
+             APIClient.shared.fetchConnections(selectedFrom, selectedTo,journeyTime);
           }
           break;
       }
