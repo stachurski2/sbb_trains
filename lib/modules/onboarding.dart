@@ -5,7 +5,6 @@ import 'package:sbb_trains/modules/searching.dart';
 import 'package:sbb_trains/helpers/color_provider.dart';
 
 class OnboardingPage extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,5 +64,7 @@ class OnboardingPage extends StatelessWidget {
         ),
       ),
     );
+
   }
 }
+

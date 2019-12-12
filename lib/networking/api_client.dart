@@ -15,7 +15,7 @@ class APIClient {
   Future<ServerResponse<List<Station>>> fetchLocationList(String input) async {
     final response = await http.get('http://transport.opendata.ch/v1/locations?query='+input);
     if(response.statusCode != 200) {
-      return ServerResponse(null, Exception('Cannot load data'));
+      return ServerResponse(null, 'Cannot load data');
     } else {
       var list = new List<Station>();
       Map<String, dynamic> decodedData = await jsonDecode(response.body);

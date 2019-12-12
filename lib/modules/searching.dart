@@ -9,6 +9,11 @@ import 'package:sbb_trains/model/station.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:intl/intl.dart';
 
+enum SearchingStatus {
+  missingStartingPoint,
+  missingEndingPoint,
+  ready,
+}
 
 class SearchingPage extends StatefulWidget {
 
@@ -48,7 +53,7 @@ class SearchingPageState extends State<SearchingPage> {
             Future<ServerResponse<List<Station>>> response = APIClient.shared.fetchLocationList(word);
             ServerResponse<List<Station>> serverResponse = await response;
             List<Station> listStation = serverResponse.responseObject;
-            if (serverResponse.serverException == null) {
+            if (serverResponse.errorMessage == null) {
               return listStation.map((station) => MaterialSearchResult<Station>(
                value: station, //The value must be of type <String>
                text: station.name)).toList();
@@ -76,7 +81,7 @@ class SearchingPageState extends State<SearchingPage> {
               Future<ServerResponse<List<Station>>> response = APIClient.shared.fetchLocationList(word);
               ServerResponse<List<Station>> serverResponse = await response;
               List<Station> listStation = serverResponse.responseObject;
-              if (serverResponse.serverException == null) {
+              if (serverResponse.errorMessage == null) {
                 return listStation.map((station) => MaterialSearchResult<Station>(
                     value: station, //The value must be of type <String>
                     text: station.name)).toList();
@@ -111,11 +116,71 @@ class SearchingPageState extends State<SearchingPage> {
               },
               child: Text(
                   formatter.format(journeyTime),
-              ))
+              )),
+              SizedBox(height: 10),
+              RaisedButton(
+                  child: Text(AppLocalizations.of(context).translate('searching_search_button_label')),
+               color: ColorProvider.shared.standardAppBackgroundColor,
+               textColor: ColorProvider.shared.standardButttonTextColor,
+               onPressed: () {
+                    if(selectedFrom == null) {
+                      this.startSearch(SearchingStatus.missingStartingPoint);
+                    } else if (selectedTo == null) {
+                      this.startSearch(SearchingStatus.missingEndingPoint);
+                    } else {
+                      this.startSearch(SearchingStatus.ready);
+                    }
+               })
             ],
 
           ),
         )
       );
   }
+
+    void startSearch(SearchingStatus status) async {
+      switch (status) {
+        case SearchingStatus.missingStartingPoint:
+          {
+            return showDialogView(AppLocalizations.of(context).translate('searching_search_missing_start_point_title'),
+                                  AppLocalizations.of(context).translate('searching_search_missing_start_point_message'));
+          }
+          break;
+        case SearchingStatus.missingEndingPoint:
+          {
+            return showDialogView(AppLocalizations.of(context).translate('searching_search_missing_end_point_title'),
+                                  AppLocalizations.of(context).translate('searching_search_missing_end_point_message'));
+          }
+          break;
+        default:
+          {
+
+          }
+          break;
+      }
+    }
+
+      void showDialogView(String title, String message) async {
+      return showDialog(
+        context: context,
+        barrierDismissible: false, // user must tap button!
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(title),
+            content: Text(message),
+            actions: <Widget>[
+              FlatButton(
+                child: Text(AppLocalizations.of(context).translate('searching_search_missing_button_label') ?? 'e'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        },
+      );
+    }
+
+
+
 }

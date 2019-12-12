@@ -11,6 +11,11 @@
   "searching_end_journey_label" : "End journey point:",
   "searching_start_journey_placeholder" : "Type start journey place",
   "searching_end_journey_placeholder" : "Type end journey place",
-  "searching_time_journey_label" : "Journey time"
-
+  "searching_time_journey_label" : "Journey time",
+  "searching_search_button_label" : "Search",
+  "searching_search_missing_start_point_title" : "Missing starting point",
+  "searching_search_missing_start_point_message" : "Fulfill start journey point",
+  "searching_search_missing_end_point_title" : "Missing ending point",
+  "searching_search_missing_end_point_message" : "Fulfill end journey point",
+  "searching_search_missing_button_label" : "OK"
 }

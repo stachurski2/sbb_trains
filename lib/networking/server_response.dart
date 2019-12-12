@@ -2,10 +2,10 @@ import 'dart:convert';
 
 class ServerResponse<T extends Object> {
   T responseObject ;
-  Exception serverException ;
+  String errorMessage;
 
-  ServerResponse(T object, Exception exception) {
-    responseObject = object;
-    serverException = exception;
+  ServerResponse(T responseObject, String errorMessage) {
+    this.responseObject = responseObject;
+    this.errorMessage = errorMessage;
   }
 }
