@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 class ServerResponse<T extends Object> {
   T responseObject ;
   String errorMessage;

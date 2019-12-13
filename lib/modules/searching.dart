@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:sbb_trains/helpers/app_localizations.dart';
 import 'package:material_search/material_search.dart';
 import 'package:sbb_trains/helpers/color_provider.dart';
+import 'package:sbb_trains/model/connection.dart';
 import 'package:sbb_trains/networking/api_client.dart';
 import 'package:sbb_trains/networking/server_response.dart';
+import 'package:sbb_trains/modules/results.dart';
 import 'package:sbb_trains/model/station.dart';
+import 'package:sbb_trains/model/connection.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:intl/intl.dart';
 
@@ -86,6 +89,7 @@ class SearchingPageState extends State<SearchingPage> {
                     value: station, //The value must be of type <String>
                     text: station.name)).toList();
               } else {
+                //handling errors
                 return List<MaterialSearchResult<Station>>();
               }
             },
@@ -154,7 +158,20 @@ class SearchingPageState extends State<SearchingPage> {
           break;
         default:
           {
-             APIClient.shared.fetchConnections(selectedFrom, selectedTo,journeyTime);
+            Future<ServerResponse<List<Connection>>> response = APIClient.shared.fetchConnections(selectedFrom, selectedTo,journeyTime);
+            ServerResponse<List<Connection>> serverResponse = await response;
+            List<Connection> listConnection = serverResponse.responseObject;
+
+            if (serverResponse.errorMessage == null) {
+
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ResultsPage(listConnection)),
+              );
+            } else {
+              //handling errors
+
+            }
           }
           break;
       }

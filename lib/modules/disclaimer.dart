@@ -7,7 +7,7 @@ class DisclaimerPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double c_width = MediaQuery.of(context).size.width;
+    double constantWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       appBar: AppBar(
@@ -35,7 +35,7 @@ class DisclaimerPage extends StatelessWidget {
               children: <Widget> [
                 Container(
                   padding: const EdgeInsets.all(24.0),
-                  width: c_width,
+                  width: constantWidth,
                   child: Column(
                     children: <Widget>[
                       Center(
