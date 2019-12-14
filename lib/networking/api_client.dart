@@ -37,7 +37,7 @@ class APIClient {
   Future<ServerResponse<List<Connection>>> fetchConnections(Station startPoint, Station endPoint, DateTime time) async {
 
     DateFormat dateFormatter  =  DateFormat('yyyy-MM-dd');
-    DateFormat timeFormatter  =  DateFormat('hh:mm');
+    DateFormat timeFormatter  =  DateFormat('HH:mm');
 
     String stringDate = dateFormatter.format(time);
     String stringTime = timeFormatter.format(time);

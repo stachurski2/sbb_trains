@@ -8,7 +8,6 @@ import 'package:sbb_trains/networking/api_client.dart';
 import 'package:sbb_trains/networking/server_response.dart';
 import 'package:sbb_trains/modules/results.dart';
 import 'package:sbb_trains/model/station.dart';
-import 'package:sbb_trains/model/connection.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:intl/intl.dart';
 

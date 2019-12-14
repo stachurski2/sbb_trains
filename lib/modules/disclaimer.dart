@@ -17,9 +17,6 @@ class DisclaimerPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            SizedBox(
-              height: 20,
-            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -64,9 +61,6 @@ class DisclaimerPage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
-              height: 20,
-            )
           ],
         )
 
