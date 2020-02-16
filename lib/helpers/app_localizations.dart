@@ -32,7 +32,7 @@ class AppLocalizations {
 
   // This method will be called from every widget which needs a localized text
   String translate(String key) {
-    return _localizedStrings[key];
+    return _localizedStrings[key] ?? key;
   }
 
   static const LocalizationsDelegate<AppLocalizations> delegate =
