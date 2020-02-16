@@ -7,11 +7,15 @@ import 'package:intl/intl.dart';
 
 class ResultsPage extends StatelessWidget {
 
+  final EdgeInsets kPadding = EdgeInsets.all(10);
+  final double kStandardInset = 10;
+  final double kStandardSizeBoxHeight = 5;
+  final double kStandardRowSizeBoxHeight = 20;
+
   final List<Connection> data;
   ResultsPage(this.data);
   DateFormat timeFormatter =  DateFormat('HH:mm');
   DateFormat dateFormatter =  DateFormat('yyyy-MM-dd');
-
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +25,8 @@ class ResultsPage extends StatelessWidget {
           backgroundColor: ColorProvider.shared.standardAppBackgroundColor,
     ),
     body: ListView.separated(
-       separatorBuilder:  ( BuildContext context, int index) => SizedBox(height: 10),
-        padding: const EdgeInsets.all(10),
+       separatorBuilder:  ( BuildContext context, int index) => SizedBox(height: kStandardInset),
+        padding: kPadding,
         itemCount: data.length,
         itemBuilder: (BuildContext context, int index) {
           return Container(
@@ -38,7 +42,7 @@ class ResultsPage extends StatelessWidget {
                       color: ColorProvider.shared.standardSilverColor,
                     ),
                     SizedBox(
-                      height: 5,
+                      height: kStandardSizeBoxHeight,
                     ),
                     Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -52,27 +56,26 @@ class ResultsPage extends StatelessWidget {
                             ],
 
                           ),
-                          SizedBox(width: 20),
+                          SizedBox(width: kStandardRowSizeBoxHeight),
                           Text(AppLocalizations.of(context).translate('results_module_arrow')),
-                          SizedBox(width: 20),
+                          SizedBox(width: kStandardRowSizeBoxHeight),
                           Column(
                             children: <Widget>[
                               Text(data[index].endStation.name),
                               Text(timeFormatter.format((data[index].endTime))),
                               Text(dateFormatter.format((data[index].endTime))),
-
                             ],
                           ),
                         ]),
                     SizedBox(
-                      height: 5,
+                      height: kStandardSizeBoxHeight,
                     ),
                     Container(
                       height: 1,
                       color: ColorProvider.shared.standardSilverColor,
                     ),
                     SizedBox(
-                      height: 5,
+                      height: kStandardSizeBoxHeight,
                     ),
                     Column(
                       children: <Widget>[
@@ -81,7 +84,7 @@ class ResultsPage extends StatelessWidget {
                       ],
                     ),
                     SizedBox(
-                      height: 5,
+                      height: kStandardSizeBoxHeight,
                     ),
                     Container(
                       height: 1,
