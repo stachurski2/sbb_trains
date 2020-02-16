@@ -1,16 +1,16 @@
 # sbb_trains
 
-Sandbox app to collecting data about connections
+Sandbox app to looking for data about railway connections based on open API: https://transport.opendata.ch
 
-## Getting Started
+Views:
+1. Onboarding module:
+    ![Onboarding module screenshot](https://raw.githubusercontent.com/stachurski2/sbb_trains/master/screenshots/onboarding_module.png)
 
-This project is a starting point for a Flutter application.
+2. Searching module - main:
+![Searching module main screenshot](https://raw.githubusercontent.com/stachurski2/sbb_trains/master/screenshots/searching_module.png)
 
-A few resources to get you started if this is your first Flutter project:
+3. Searching module - tips:
+![Searching module tips screenshot](https://raw.githubusercontent.com/stachurski2/sbb_trains/master/screenshots/searching_module_1.png)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+4. Results module:
+![Searching module main screenshot](https://raw.githubusercontent.com/stachurski2/sbb_trains/master/screenshots/results_module.png)
