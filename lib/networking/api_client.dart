@@ -37,7 +37,7 @@ class APIClient {
   Future<ServerResponse<List<Connection>>> fetchConnections(Station startPoint, Station endPoint, DateTime time) async {
 
     DateFormat dateFormatter  =  DateFormat('yyyy-MM-dd');
-    DateFormat timeFormatter  =  DateFormat('hh:mm');
+    DateFormat timeFormatter  =  DateFormat('HH:mm');
 
     String stringDate = dateFormatter.format(time);
     String stringTime = timeFormatter.format(time);
@@ -46,7 +46,6 @@ class APIClient {
     String endPointId = endPoint.identfier;
 
     String stringUrl = 'http://transport.opendata.ch/v1/connections?from='+startPointId+'&to='+endPointId+'&date='+stringDate+'&time='+stringTime;
-    print(stringUrl);
 
     final response = await http.get(stringUrl);
     if(response.statusCode != 200) {
@@ -55,6 +54,7 @@ class APIClient {
       var list = new List<Connection>();
       Map<String, dynamic> decodedData = await jsonDecode(response.body);
       List connectionList = await decodedData[kConnectionsKeyword];
+
       for (var i = 0; i < connectionList.length; i++) {
         Map<String, dynamic> connectionData = await connectionList[i];
         list.add(retrieveConnectionFrom(connectionData));
@@ -86,11 +86,11 @@ class APIClient {
     Map<String, dynamic> stationFromData = dictionary[kFromKeyword];
     Map<String, dynamic> stationToData = dictionary[kToKeyword];
     Station startStation = retrieveStationFrom(stationFromData[kStationKeyword]);
-    Station endStation =  retrieveStationFrom(stationToData[kStationKeyword]);
-    String departureTime =  stationFromData[kDepartureKeyword];
-    String arrivalTime =  stationToData[kArrivalKeyword];
-    String duration =  dictionary[kDurationKeyword];
-    List products =  dictionary[kProductsKeyword];
+    Station endStation = retrieveStationFrom(stationToData[kStationKeyword]);
+    String departureTime = stationFromData[kDepartureKeyword];
+    String arrivalTime = stationToData[kArrivalKeyword];
+    String duration = dictionary[kDurationKeyword];
+    List products = dictionary[kProductsKeyword];
     int changes = products.length - 1;
     return Connection(startStation,endStation,departureTime,arrivalTime,duration,changes);
   }

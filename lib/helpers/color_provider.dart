@@ -15,4 +15,9 @@ class ColorProvider {
 
   Color standardButttonTextColor =  Color.fromRGBO(249, 255, 249, 1.0);
 
+  Color standardSilverColor =  Color.fromRGBO(192, 192, 192, 1.0);
+
+  Color resultCellBackgroundColor =  Color.fromRGBO(248, 248, 255, 1.0);
+
+
 }

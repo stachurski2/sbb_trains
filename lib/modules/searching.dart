@@ -8,7 +8,6 @@ import 'package:sbb_trains/networking/api_client.dart';
 import 'package:sbb_trains/networking/server_response.dart';
 import 'package:sbb_trains/modules/results.dart';
 import 'package:sbb_trains/model/station.dart';
-import 'package:sbb_trains/model/connection.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:intl/intl.dart';
 
@@ -27,6 +26,9 @@ class SearchingPage extends StatefulWidget {
 
 class SearchingPageState extends State<SearchingPage> {
 
+  final EdgeInsets kPadding = EdgeInsets.only(left: 24.0, right: 24.0);
+  final double kStandardSizeBoxHeight = 10;
+
   Station selectedFrom;
   Station selectedTo;
   DateTime journeyTime = DateTime.now();
@@ -41,10 +43,10 @@ class SearchingPageState extends State<SearchingPage> {
     ),
       body:
         Container(
-          padding: const EdgeInsets.only(left: 24.0, right: 24.0),
+          padding: kPadding,
           child: Column(
             children: <Widget>[
-              SizedBox(height: 10),
+              SizedBox(height: kStandardSizeBoxHeight),
               Row(
               children: <Widget>[
                 Text(AppLocalizations.of(context).translate('searching_start_journey_label'),
@@ -71,7 +73,7 @@ class SearchingPageState extends State<SearchingPage> {
             return station.name;
           },
           ),
-              SizedBox(height: 10),
+              SizedBox(height: kStandardSizeBoxHeight),
               Row(
                   children: <Widget>[
                     Text(AppLocalizations.of(context).translate('searching_end_journey_label'),
@@ -99,7 +101,7 @@ class SearchingPageState extends State<SearchingPage> {
             formatter: (station) {
               return station.name;
             }),
-              SizedBox(height: 10),
+              SizedBox(height: kStandardSizeBoxHeight),
               Row(
                   children: <Widget>[
                     Text(AppLocalizations.of(context).translate('searching_time_journey_label'),
@@ -121,7 +123,7 @@ class SearchingPageState extends State<SearchingPage> {
               child: Text(
                   formatter.format(journeyTime),
               )),
-              SizedBox(height: 10),
+              SizedBox(height: kStandardSizeBoxHeight),
               RaisedButton(
                   child: Text(AppLocalizations.of(context).translate('searching_search_button_label')),
                color: ColorProvider.shared.standardAppBackgroundColor,

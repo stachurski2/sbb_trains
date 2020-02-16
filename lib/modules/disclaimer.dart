@@ -4,6 +4,9 @@ import 'package:sbb_trains/helpers/color_provider.dart';
 
 class DisclaimerPage extends StatelessWidget {
 
+  final double kHeaderFontSize = 25;
+  final double kFontSize = 12;
+  final kPadding = EdgeInsets.all(24.0);
 
   @override
   Widget build(BuildContext context) {
@@ -17,15 +20,12 @@ class DisclaimerPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            SizedBox(
-              height: 20,
-            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
                     AppLocalizations.of(context).translate('disclaimer_title'),
-                    style: TextStyle(fontSize: 25),
+                    style: TextStyle(fontSize: kHeaderFontSize),
                     textAlign: TextAlign.center
                 ),
               ],
@@ -34,21 +34,20 @@ class DisclaimerPage extends StatelessWidget {
 
               children: <Widget> [
                 Container(
-                  padding: const EdgeInsets.all(24.0),
+                  padding: kPadding,
                   width: constantWidth,
                   child: Column(
                     children: <Widget>[
                       Center(
                         child: Text(
                             AppLocalizations.of(context).translate('disclaimer_content'),
-                            style: TextStyle(fontSize: 12),
+                            style: TextStyle(fontSize: kFontSize),
                             textAlign: TextAlign.justify
                         ),
                       )
                       ],
                   ),
                 )
-
               ],
             ),
             Row(
@@ -64,9 +63,6 @@ class DisclaimerPage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
-              height: 20,
-            )
           ],
         )
 

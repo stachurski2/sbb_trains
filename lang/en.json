@@ -18,5 +18,8 @@
   "searching_search_missing_end_point_title" : "Missing ending point",
   "searching_search_missing_end_point_message" : "Fulfill end journey point",
   "searching_search_missing_button_label" : "OK",
-  "results_module_name" : "Searching Results"
+  "results_module_name" : "Searching Results",
+  "results_module_arrow" : "->",
+  "results_module_duration" : "Duration: ",
+  "results_module_changes" : "Changes: "
 }
